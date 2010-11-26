@@ -3,6 +3,10 @@ require 'init/libs.rb'
 require 'init/models.rb'
 require 'init/controllers.rb'
 
+@config = YAML.load_file("config/database.yml")
+
+ActiveRecord::Base.establish_connection(:adapter => @config["adapter"], :host => @config["host"], :database => @config["database"])
+
 class DaRouter
   include DSL
   include CommonHelpers
@@ -10,7 +14,7 @@ class DaRouter
   @@params = []
   
   get '/' do
-    :"countries/index"
+    :"static/index"
   end
   
   get '/country' do
@@ -55,7 +59,7 @@ class DaRouter
   end
   
   get '/about-us' do
-    :"aboutus"
+    :"static/about-us"
   end
 
   def call(env)

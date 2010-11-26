@@ -1,13 +1,5 @@
-
-class State
+class State < ActiveRecord::Base
   attr_accessor :id, :name, :cities, :runners
-  
-  def initialize(id, name, cities, runners)
-    @id = id
-    @name = name
-    @cities = cities || []
-    @runners = runners || {}
-  end
   
   def self.new_from_json response, key
     begin

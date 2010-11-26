@@ -1,13 +1,6 @@
-
-class Table
+class Table < ActiveRecord::Base
   attr_accessor :id, :name, :runners
-  
-  def initialize(id, name, runners)
-    @id = id
-    @name = name
-    @runners = runners || {}
-  end
-  
+    
   def total_votes
     sum = 0
     runners.each do |runner, votes|

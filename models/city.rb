@@ -1,13 +1,5 @@
-
-class City
+class City < ActiveRecord::Base
   attr_accessor :id, :name, :centres, :runners
-  
-  def initialize(id, name, centres, runners)
-    @id = id
-    @name = name
-    @centres = centres || []
-    @runners = runners || {}
-  end
   
   def total_votes
     sum = 0

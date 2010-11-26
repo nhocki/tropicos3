@@ -1,13 +1,6 @@
 class Centre < ActiveRecord::Base
   attr_accessor :id, :name, :tables, :runners
   
-  def initialize(id, name, tables, runners)
-    @id = id
-    @name = name
-    @tables = tables || []
-    @runners = runners || {}
-  end
-  
   def total_votes
     sum = 0
     runners.each do |runner, votes|
