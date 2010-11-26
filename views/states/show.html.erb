@@ -1,0 +1,29 @@
+<div id="panes">
+  <h1>Results in <%= @state.name %></h1>
+
+  <h2>Final Results</h2>
+  <% @state.runners.sort {|x, y| x.last <=> y.last}.reverse.each do |runner, value| %>
+  <p><%= runner %> - <%= value %> votes</p>
+  <% end %>
+  
+  <img src="/public/images/state_graph.png" title="<%= @state.name %>'s Results" />
+
+  <h2>Cities that voted in <%= @state.name %></h2>
+  <% @state.cities.each do |city| %>
+  <h3><%= city.name %>'s results</h3>
+  
+  <div class="results">
+    <% city.runners.sort {|x, y| x.last <=> y.last}.reverse.each do |runner, value| %>
+    <p><%= runner %> - <%= value %></p>
+    <% end %>
+  </div>
+  
+  <h4>Total votes on <%= city.name %>'s centres</h4>
+  <ul>
+    <% for centre in city.centres %>
+    <li><%= centre.name %> - <%= centre.total_votes %> total votes</li>
+    <% end %>
+  </ul>
+  
+  <% end %>
+</div>

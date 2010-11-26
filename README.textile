@@ -1,0 +1,24 @@
+h1. FETCHING DATA FROM GOOGLE DOCS WITH RUBY
+
+Ballotox will let you fetch some voting system stored on google docs.
+
+h2. Testing
+
+If you need to test the application, you can use this key: 0AsTunpthKrMxdEp5R1loYjBBcVhNQWVEc1BUZmZ1QUE to fetch a country.
+
+h4. Gems Required
+ * rack
+ * hpricot
+ * crack
+ * tilt
+ * gruff (needs rmagick)
+
+h4. Bugs & Issues
+
+Use Github issues on top of this page
+
+h4. Comments
+
+ * Juan Felipe Arango Aguirre: jfelipe38@gmail.com (http://github.com/jfelipe)
+ * Sergio Botero Uribe: sergiobuj@gmail.com (http://github.com/sergiobuj)
+ * Nicolás Hock Isaza: nhocki@gmail.com (http://github.com/nhocki)

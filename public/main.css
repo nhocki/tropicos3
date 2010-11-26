@@ -1,0 +1,89 @@
+body, h1, p, h2, h3, h4, div, span, th, td, tr, tbody, table {font-family: 'Inconsolata', arial, serif;}
+*{outline: none;}
+body{
+  font-family: 'Molengo', arial, serif; 
+  background-image:url('/public/images/background.png');
+  background-repeat:repeat-x;
+}
+
+header, footer {display: block; clear: both;}
+
+h1.title {text-align: center;}
+.graph{width: 500px; margin: 0 auto; float:left;}
+#graphs{width: 950px; margin: 0 auto; padding-top: 80px;}
+
+#search-field { 
+  position:relative;
+  margin:0 auto 0 auto; width:550px;
+}
+#country-key{
+  border:1px solid #999999;
+  font-size:24px;
+  padding:10px 1px 1px;
+  vertical-align:middle;
+  width:500px;
+  height:20px;
+}
+/*div.text_clear_button { background:transparent url(clear_cross.png) no-repeat 0 0; width:15px; height:15px; margin:0; padding:0; z-index:2; position:absolute; cursor:pointer;}*/
+label { 
+  font-size:24px;
+  position:absolute; 
+  bottom:0; 
+  left:185px; 
+  z-index: 3;
+}
+
+.loader {
+  display: none;
+  margin:0 auto 0 auto; width:100px;
+}
+
+#panes {width: 800px; margin: 0 auto;}
+
+#panes ul{
+	list-style:none;
+}
+#panes li{
+
+}
+.sample-key {text-shadow: 1px 1px rgba(0, 0, 0, 0.3);}
+
+#boton{
+  margin:10px auto 50px 170px; 
+  width:130px;
+  text-decoration:underline;
+  font-size:12px;
+   font-family: 'Molengo', arial, serif; 
+   color:#888888;
+   background-color:#EEEEEE;
+   border-style:solid;
+   border-color:#999999;
+   border-width:1px;	
+}
+
+#console{display: none;}
+.cargar-datos{
+  font-size:12px;
+  color:#000000;
+  cursor:pointer;
+  height:30px;
+  margin-top:10px;
+  outline:0 none;
+  vertical-align:top;
+}
+
+.image-title {
+  margin:0 auto 0 auto; width:390px;
+}
+
+.votes{float: right;}
+
+/*#panes, #nav {display: none;}*/
+
+#footer{clear: both; width: 600px; margin: 0 auto; text-align: center;}
+#footer a{text-align: center;}
+
+.centered {text-align: center;}
+
+/*Estilos de el pane ---------------------------------------------------------------------------*/
+#country-sample-key {text-shadow: 1px 1px rgba(0, 0, 0, 0.3);}

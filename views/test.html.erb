@@ -1,0 +1,17 @@
+<h1>Results in <%= @country.name %></h1>
+
+<h2>Country's States</h2>
+<% @country.states.each do |state| %>
+  <h3><%= state.name %></h3>
+  <ul>
+    <% for city in state.cities %>
+      <li><%= city.name %> - <%= city.total_votes %> votos totales</li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<h1>Country's Results</h1>
+<% @country.runners.each do |runner, value| %>
+  <p><%= runner %> - <%= value %></p>
+<% end %>

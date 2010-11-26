@@ -1,0 +1,7 @@
+require 'models/api/google.rb'
+require 'models/country.rb'
+require 'models/state.rb'
+require 'models/city.rb'
+require 'models/centre.rb'
+require 'models/table.rb'
+require 'models/runner.rb'
