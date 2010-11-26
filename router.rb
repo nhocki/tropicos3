@@ -1,9 +1,5 @@
-require 'erb'
-require 'tilt'
-require 'gruff'
-require 'lib/routes.rb'
-require 'lib/dsl.rb'
-require 'lib/helpers.rb'
+require 'init/gems.rb'
+require 'init/libs.rb'
 require 'init/models.rb'
 require 'init/controllers.rb'
 

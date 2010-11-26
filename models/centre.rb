@@ -1,5 +1,4 @@
-
-class Centre
+class Centre < ActiveRecord::Base
   attr_accessor :id, :name, :tables, :runners
   
   def initialize(id, name, tables, runners)
