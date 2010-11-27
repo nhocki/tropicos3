@@ -8,6 +8,10 @@ body{
 
 header, footer {display: block; clear: both;}
 
+#fork-us {position: fixed; top: 0; left: 0;}
+
+a img{border: none;}
+
 h1.title {text-align: center;}
 .graph{width: 500px; margin: 0 auto; float:left;}
 #graphs{width: 950px; margin: 0 auto; padding-top: 80px;}
