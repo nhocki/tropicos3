@@ -1,8 +1,9 @@
 require 'rubygems'
+require 'yaml'
 require 'active_record'
 
 @config = YAML.load_file("../../config/database.yml")
-ActiveRecord::Base.establish_connection(:adapter => @config["adapter"], :host => @config["host"], :database => "test.sqlite3")
+ActiveRecord::Base.establish_connection(:adapter => @config["adapter"], :host => @config["host"], :database => @config["database"])
 
 
 ActiveRecord::Schema.define do

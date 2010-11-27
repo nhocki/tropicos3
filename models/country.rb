@@ -2,8 +2,8 @@ require 'rubygems'
 require 'active_record'
 require 'hpricot'
 
-@config = YAML.load_file("../config/database.yml")
-ActiveRecord::Base.establish_connection(:adapter => @config["adapter"], :host => @config["host"], :database => "../db/management/test.sqlite3")
+# @config = YAML.load_file("../config/database.yml")
+# ActiveRecord::Base.establish_connection(:adapter => @config["adapter"], :host => @config["host"], :database => "../db/management/test.sqlite3")
 
 
 class Country < ActiveRecord::Base
