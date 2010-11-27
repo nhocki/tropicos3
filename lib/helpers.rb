@@ -33,5 +33,44 @@ module CommonHelpers
       output = Tilt.new(template)
       output.render {body}
     end
+    
+    def formated_result(object, extension)
+      begin
+        result = case
+        when extension =~ /xml/
+          object.to_xml
+        when extension =~ /json/
+          object.to_json
+        when extension =~ /yaml/
+          object.to_yaml
+        when extension =~ /yml/
+          object.to_yaml
+        else
+          nil
+        end
+        result
+      end
+    end
+    
+    def formated_content_type(extension)
+      begin
+        result = case
+        when extension =~ /xml/
+          'text/xml'
+        when extension =~ /json/
+          'application/json'
+        when extension =~ /yaml/
+          'ext/x-yaml'
+        when extension =~ /yml/
+          'ext/x-yaml'
+        else
+          raise Exception.new("MIME Type not found. Please use XML, JSON or YAML")
+        end
+        result
+      end
+    end
+    
+    
+    
   end
 end

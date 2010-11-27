@@ -1,6 +1,6 @@
 class State < ActiveRecord::Base
   attr_accessor :id, :name, :cities, :runners
-  
+
   def self.new_from_json response, key
     begin
       id = key
@@ -24,7 +24,7 @@ class State < ActiveRecord::Base
       raise Exception.new("State key is not valid. An error ocurred. #{e.message}")
     end
   end
-  
+
   def self.new_state_from_key key
     return State.new_from_json(API::Google.get_spread_sheet_from_key(key), key)
   end

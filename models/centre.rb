@@ -1,5 +1,7 @@
 class Centre < ActiveRecord::Base
-  attr_accessor :id, :name, :tables, :runners
+  attr_accessible :name, :city_id
+  
+  validates_presence_of :name
   
   def total_votes
     sum = 0
@@ -38,4 +40,16 @@ class Centre < ActiveRecord::Base
   protected
   def self.parse_instance(attributes, id) ; end
 end
+
+# Centre.create(:name => "Estadio Atanasio Girardot", :city_id => 1)
+a = Centre.new
+puts "Es válido? #{a.valid?}"
+
+puts a.errors.to_yaml
+
+a.errors.each do |attribute, error|
+  puts "Error on #{attribute}: #{error}"
+end
+
+
 

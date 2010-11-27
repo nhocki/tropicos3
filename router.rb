@@ -9,12 +9,13 @@ class DaRouter
   include CommonHelpers
 
   @@params = []
+  @@extension = "html"
   
   get '/' do
     :"static/index"
   end
   
-  get '/country' do
+  get '/country.:format' do
     :"countries/index"
   end
   
@@ -55,6 +56,24 @@ class DaRouter
     :"states/show"
   end
   
+  
+  ######################### CENTRES #########################
+  get '/centres.:format' do |format|
+    @centres = CentresController.index
+    format.nil? ? :"centres/index" : @centres
+  end
+  
+  get '/centres/:id.:format' do |id, format|
+    @centre = CentresController.show({:id => id})
+    if format.nil?
+      :"centres/show"
+    else
+      @centre
+    end
+  end
+  
+  
+  ######################### STATIC ROUTES #########################
   get '/about-us' do
     :"static/about-us"
   end
@@ -64,19 +83,31 @@ class DaRouter
     verb = env['REQUEST_METHOD']
     req_uri = env['REQUEST_URI']
     @@params = Rack::Request.new(env).params
-    route, vals = self.class.routes.match(verb, path)
+    route, vals, extension = self.class.routes.match(verb, path)
+    vals << extension if extension
+    puts "\n\n*** Extension = #{extension}\n\n\n"
     if route.nil?
       return [404, {'Content-Type' => 'text/html'}, '¿Qué te pasa chico?']
     else
       begin
-        response = self.class.final_result(self.class.erb(route.action.call(*vals)))
-        [200, {'Content-Type' => 'text/html', 'charset' => 'utf-8'}, response]
+        result = route.action.call(*vals)        
+        if extension.nil?
+          # HTML response, no format given
+          response = self.class.final_result(self.class.erb(result))
+          [200, {'Content-Type' => 'text/html', 'charset' => 'utf-8'}, response]
+        else
+          [200, {'Content-Type' => self.class.formated_content_type(extension), 'charset' => 'utf-8'}, self.class.formated_result(result,extension)]
+        end
+        
       rescue Exception => e
         html = <<-HTML
           <h1>Server Error!</h1>
           <p>There was an error in the server!</p>
           <p>#{e.message}</p>
         HTML
+        puts "*********** ERROR LOG  ***********"
+        puts "#{e.message}"
+        puts "**********************************"
         [500, {'Content-Type' => 'text/html', 'charset' => 'utf-8'}, html]
       end
     end

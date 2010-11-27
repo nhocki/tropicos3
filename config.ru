@@ -1,5 +1,10 @@
 use Rack::Reloader, 0
 use Rack::ContentLength
+use Rack::Session::Cookie,  :key => '__ballotox__session',
+                            :domain => 'ballotox.nhocki.com',
+                            :path => '/',
+                            :expire_after => 2592000,
+                            :secret => '0eA3278Shhjk71032610d6a5389b5a368595ae2f52c6523a4'
 use Rack::Static, :urls => ["/public"]
 
 begin

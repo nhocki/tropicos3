@@ -1,7 +1,9 @@
 class CountriesController
-  def self.show(key)
-    @country = Country.new_country_from_key(key)
-    # Make it clap!
-    @country
+  def self.index
+    @countries = Country.all
+  end
+  
+  def self.show params
+    @country = Country.find params[:id]
   end
 end

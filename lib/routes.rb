@@ -23,8 +23,11 @@ class Routes < Array
     return nil, nil if routes.empty? # No encontramos nada así
     test_path = Path.new(path)
     routes.each do |route|
-      matched, vals = route.path.match? test_path
-      return route, vals if matched
+      matched, vals, format = route.path.match? test_path
+      if matched
+        puts "\n\n\nReturning path #{format}"
+        return route, vals, format
+      end
     end
     return nil, nil
   end
@@ -71,15 +74,16 @@ class Path
   end
   
   def match? path
-    if path.extension == @extension and static_match?(path) and values_match?(path)
+    puts "Path extension = #{path.extension}"
+    if static_match?(path) and values_match?(path)
       values = Array.new
       @parts.each_with_index do |part, index|
         values << path.parts[index] if is_param?(part)
       end
       values << path.extension[1..-1] unless (@extension.nil? or is_param?(@extension, 1))
-      return true, values
+      return true, values, path.extension
     else
-      return nil, nil
+      return nil, nil, nil
     end
   end
   
