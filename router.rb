@@ -16,10 +16,10 @@ class DaRouter
   end
   
   # Country#show
-  get '/country/:key' do |key|
+  get '/country/:id' do |key|
     # 0AsTunpthKrMxdEp5R1loYjBBcVhNQWVEc1BUZmZ1QUE
     @title = "Country Report"
-    @country = CountriesController.show(key)
+    @country = CountriesController.show({:id => id})
     create_graph("National Results", "country_graph", @country.runners)
     :"countries/show"
   end
