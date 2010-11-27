@@ -10,18 +10,17 @@ module CommonHelpers
   module ClassMethods
     def method_missing(method_name, *args, &block)
       super(method_name, *args, &block) unless method_name.to_s =~ /(url|path)/
-      
+      real_path = method_name.to_s.gsub(/_(url|path)/, "")
       if args.first.nil?
         # collection path
-        return "/#{method_name.to_s.gsub(/_(url|path)/, "")}"
+        return "/#{real_path}"
       else
         # member path
-        real_path = method_name.to_s.gsub!(/_(url|path)/, "")
         parts = real_path.split("_")
-        if parts.size.zero?
-          return "/#{real_path}s/#{args.first.id}"
-        else
+        if parts.size > 1
           return "/#{parts.last}s/#{args.first.id}/#{parts.first}"
+        else
+          return "/#{real_path}s/#{args.first.id}"
         end
       end
     end
