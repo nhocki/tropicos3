@@ -25,7 +25,6 @@ class Routes < Array
     routes.each do |route|
       matched, vals, format = route.path.match? test_path
       if matched
-        puts "\n\n\nReturning path #{format}"
         return route, vals, format
       end
     end
@@ -74,7 +73,6 @@ class Path
   end
   
   def match? path
-    puts "Path extension = #{path.extension}"
     if static_match?(path) and values_match?(path)
       values = Array.new
       @parts.each_with_index do |part, index|

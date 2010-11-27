@@ -85,7 +85,6 @@ class DaRouter
     @@params = Rack::Request.new(env).params
     route, vals, extension = self.class.routes.match(verb, path)
     vals << extension if extension
-    puts "\n\n*** Extension = #{extension}\n\n\n"
     if route.nil?
       return [404, {'Content-Type' => 'text/html'}, '¿Qué te pasa chico?']
     else
@@ -105,9 +104,9 @@ class DaRouter
           <p>There was an error in the server!</p>
           <p>#{e.message}</p>
         HTML
-        puts "*********** ERROR LOG  ***********"
+        puts "********************************** ERROR LOG  **********************************"
         puts "#{e.message}"
-        puts "**********************************"
+        puts "********************************************************************************"
         [500, {'Content-Type' => 'text/html', 'charset' => 'utf-8'}, html]
       end
     end

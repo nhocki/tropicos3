@@ -27,9 +27,11 @@ ActiveRecord::Schema.define do
 
   create_table :tables, :force => true do |t|
     t.string :name
-    t.integer :piedad
-    t.integer :reyes
-    t.integer :jojoy
     t.integer :center_id
+  end
+  
+  create_table :runner, :force => true do |t|
+    t.string :name
+    t.votes :integer
   end
 end
