@@ -3,11 +3,8 @@ require 'init/libs.rb'
 require 'init/models.rb'
 require 'init/controllers.rb'
 
-@config = YAML.load_file("config/database.yml")
-
-ActiveRecord::Base.establish_connection(:adapter => @config["adapter"], :host => @config["host"], :database => @config["database"])
-
 class DaRouter
+  
   include DSL
   include CommonHelpers
 
