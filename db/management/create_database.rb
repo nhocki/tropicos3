@@ -26,7 +26,7 @@ ActiveRecord::Schema.define do
   end
 
   create_table :tables, :force => true do |t|
-    t.integer :center_id
+    t.integer :centre_id
   end
   
   create_table :results, :force => true do |t|

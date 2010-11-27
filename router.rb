@@ -11,19 +11,15 @@ class DaRouter
   @@params = []
   @@extension = "html"
   
-  get '/' do
-    :"static/index"
-  end
-  
   get '/country.:format' do
     :"countries/index"
   end
   
   # Country#show
-  get '/country/:key' do |key|
+  get '/country/:id' do |key|
     # 0AsTunpthKrMxdEp5R1loYjBBcVhNQWVEc1BUZmZ1QUE
     @title = "Country Report"
-    @country = CountriesController.show(key)
+    @country = CountriesController.show({:id => id})
     create_graph("National Results", "country_graph", @country.runners)
     :"countries/show"
   end
@@ -58,26 +54,51 @@ class DaRouter
   
   
   ######################### CENTRES #########################
+
   get '/centres.:format' do |format|
     @centres = CentresController.index
     format.nil? ? :"centres/index" : @centres
   end
   
+  # Read action
   get '/centres/:id.:format' do |id, format|
     @centre = CentresController.show({:id => id})
-    if format.nil?
-      :"centres/show"
+    format.nil? ? :"centres/show" : @centre
+  end
+  
+  # Create action
+  post '/centres.:format' do |format|
+    
+  end
+  
+  # Update action
+  put '/centres/:id.:format' do |id, format|
+    @@params.merge!({:id => id})
+    @centre, success = CentresController.update(@@params)
+    if success
+      format.nil? ? :"centres/show" : @centre
     else
-      @centre
+      format.nil? ? :"centres/errors" : @centre.errors
     end
   end
   
+  # Destroy action
+  delete '/centres/:id.:format' do |id, format|
+    @@params.merge!({:id => id})
+    @centre = CentresController.update(@@params)
+    format.nil? ? :"centres/index" : @centre
+  end
   
   ######################### STATIC ROUTES #########################
   get '/about-us' do
     :"static/about-us"
   end
+  
+  get '/' do
+    :"static/index"
+  end
 
+  ######################### RACK STUFF #########################
   def call(env)
     path = env["PATH_INFO"]
     verb = env['REQUEST_METHOD']

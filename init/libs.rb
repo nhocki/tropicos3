@@ -1,3 +1,4 @@
-require 'lib/routes.rb'
-require 'lib/dsl.rb'
-require 'lib/helpers.rb'
+Dir["lib/*.rb"].each do |file| 
+  puts "Requiring #{file}"
+  require file
+end

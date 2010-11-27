@@ -12,6 +12,8 @@ header, footer {display: block; clear: both;}
 
 a img{border: none;}
 
+.list {text-align: left;}
+
 h1.title {text-align: center;}
 .graph{width: 500px; margin: 0 auto; float:left;}
 #graphs{width: 950px; margin: 0 auto; padding-top: 80px;}

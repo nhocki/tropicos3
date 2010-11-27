@@ -8,6 +8,24 @@ module CommonHelpers
   end
 
   module ClassMethods
+    
+    def method_missing(method_name, *args, &block)
+      super(method_name, *args, &block) unless method_name.to_s =~ /(url|path)/
+      real_path = method_name.to_s.gsub(/_(url|path)/, "")
+      if args.first.nil?
+        # collection path
+        return "/#{real_path}"
+      else
+        # member path
+        parts = real_path.split("_")
+        if parts.size > 1
+          return "/#{parts.last}s/#{args.first.id}/#{parts.first}"
+        else
+          return "/#{real_path}s/#{args.first.id}"
+        end
+      end
+    end
+    
     def erb (template = :test)
       template = "views/#{template}.html.erb"
       raise Exception.new("File not found! (#{template})") unless File.exists?(template)
@@ -45,8 +63,10 @@ module CommonHelpers
           object.to_yaml
         when extension =~ /yml/
           object.to_yaml
+        when extension =~ /html/
+          object.to_s
         else
-          nil
+          raise Exception.new("MIME Type not found. Please use XML, JSON or YAML")
         end
         result
       end
@@ -63,6 +83,8 @@ module CommonHelpers
           'ext/x-yaml'
         when extension =~ /yml/
           'ext/x-yaml'
+        when extension =~ /html/
+          'text/html'
         else
           raise Exception.new("MIME Type not found. Please use XML, JSON or YAML")
         end
