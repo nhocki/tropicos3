@@ -8,6 +8,7 @@ module CommonHelpers
   end
 
   module ClassMethods
+    
     def method_missing(method_name, *args, &block)
       super(method_name, *args, &block) unless method_name.to_s =~ /(url|path)/
       real_path = method_name.to_s.gsub(/_(url|path)/, "")
@@ -65,7 +66,7 @@ module CommonHelpers
         when extension =~ /html/
           object.to_s
         else
-          nil
+          raise Exception.new("MIME Type not found. Please use XML, JSON or YAML")
         end
         result
       end
