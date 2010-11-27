@@ -1,1 +1,11 @@
 <h1>Centres index</h1>
+
+<%= centres_url %>
+
+<div class="list">
+  <% for centre in @centres %>
+    <h4><%= centre.name %></h4>
+    <%= centre_url(centre) %>
+    <%= edit_centre_url(centre) %>
+  <% end %>
+</div>

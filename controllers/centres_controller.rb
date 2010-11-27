@@ -16,4 +16,9 @@ class CentresController
     @centre = Centre.new params["centre"]
     @centre.save
   end
+  
+  def self.update params
+    @centre = Centre.find params[:id]
+    return @centre, @centre.update_attributes(params["centre"])
+  end
 end
