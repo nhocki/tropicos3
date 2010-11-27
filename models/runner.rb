@@ -1,3 +1,4 @@
-class Runner  < ActiveRecord::Base
-  
+class Runner < ActiveRecord::Base
+  attr_accessible :name
+  validates_presence_of :name
 end

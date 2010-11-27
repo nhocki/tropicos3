@@ -26,12 +26,16 @@ ActiveRecord::Schema.define do
   end
 
   create_table :tables, :force => true do |t|
-    t.string :name
     t.integer :center_id
   end
   
-  create_table :runner, :force => true do |t|
+  create_table :results, :force => true do |t|
+    t.integer :table_id
+    t.integer :runner_id
+    t.integer :votes
+  end
+  
+  create_table :runners, :force => true do |t|
     t.string :name
-    t.votes :integer
   end
 end
