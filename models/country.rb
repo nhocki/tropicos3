@@ -1,6 +1,14 @@
+require 'rubygems'
+require 'active_record'
+require 'hpricot'
+
+@config = YAML.load_file("../config/database.yml")
+ActiveRecord::Base.establish_connection(:adapter => @config["adapter"], :host => @config["host"], :database => "../db/management/test.sqlite3")
+
+
 class Country < ActiveRecord::Base
-  attr_accessor :id, :name, :states, :runners
-  
+  # attr_accessor :id, :name, :states, :runners
+  attr_accessible :name
   def self.new_from_json (response, key)
     begin
       id = key
@@ -33,3 +41,12 @@ class Country < ActiveRecord::Base
   def self.parse_instance(attributes, id) ; end
 end
 
+xml = <<-XML
+<?xml version="1.0" encoding="UTF-8"?>
+<country>
+  <name>HOLA</name>
+</country>
+XML
+
+c  = Country.new.from_xml(xml)
+puts c.to_json
