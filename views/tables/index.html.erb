@@ -1,0 +1,10 @@
+<h1>Tables index</h1>
+
+<%= tables_url %>
+
+<div class="list">
+  <% for table in @tables %>
+    <%= table_url(table) %>
+    <%= edit_table_url(table) %>
+  <% end %>
+</div>
