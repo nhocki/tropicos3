@@ -12,6 +12,7 @@ namespace :db do
     ActiveRecord::Schema.define do
       create_table :countries, :force => true do |t|
         t.string :name
+        t.string :small_description
       end
       
       create_table :states, :force => true do |t|
@@ -53,7 +54,7 @@ namespace :db do
     ActiveRecord::Base.establish_connection({:adapter => @config["adapter"], :host => @config["host"], :database => @config["database"]})
 
     puts "Creating country and states"
-    country = Country.create({:name => "Colombia"})
+    country = Country.create({:name => "Colombia", :small_description => "magic lands"})
     country.states.create([{:name => "Antioquia"}, {:name => "Cundinamarca"}, {:name => "Valle del Cauca"}])
 
     antioquia = State.find_by_name("Antioquia")

@@ -1,5 +1,5 @@
 class Country < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :small_description
   has_many :states
   
   include ModelExtensions

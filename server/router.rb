@@ -23,7 +23,7 @@ class DaRouter
     # 0AsTunpthKrMxdEp5R1loYjBBcVhNQWVEc1BUZmZ1QUE
     @title = "Country Report"
     @country = CountriesController.show({:id => key})
-    create_graph("National Results", "country_graph", @country.runners)
+    create_graph("#{@country.name}'s National Results", "country_graph", @country.runners)
     :"countries/show"
   end
   
@@ -101,6 +101,10 @@ class DaRouter
   end
   
   ######################### STATIC ROUTES #########################
+  get '/admin' do
+    :"static/admin"
+  end
+  
   get '/about-us' do
     :"static/about-us"
   end
