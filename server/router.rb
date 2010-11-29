@@ -205,6 +205,16 @@ class DaRouter
   end
 
   ######################### RACK STUFF #########################
+  
+  def callback_response(callback, response)
+    if callback.nil?
+      response
+    else
+      callback + "(" + response + ")"
+    end
+  end
+
+  
   def call(env)
     path = env["PATH_INFO"]
     verb = env['REQUEST_METHOD']
@@ -236,7 +246,7 @@ class DaRouter
           response = self.class.final_result(self.class.erb(result))
           [200, {'Content-Type' => 'text/html', 'charset' => 'utf-8'}, response]
         else
-          [200, {'Content-Type' => self.class.formated_content_type(extension), 'charset' => 'utf-8'}, self.class.formated_result(result,extension)]
+          [200, {'Content-Type' => self.class.formated_content_type(extension), 'charset' => 'utf-8'}, callback_response(@@params["callback"], self.class.formated_result(result, extension))]
         end
         
       rescue Exception => e
