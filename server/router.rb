@@ -66,7 +66,17 @@ class DaRouter
   
   # Create action
   post '/centres.:format' do |format|
-    
+    params = {}
+    params[:centre] = {}
+    @@params.each do |key, value|
+      params[:centre][key.to_sym] = value
+    end
+    @centre, success = CentresController.create(params)
+    if success
+      format.nil? ? :"centres/show" : @centre
+    else
+      format.nil? ? :"centres/errors" : @centre.errors
+    end
   end
   
   # Update action

@@ -14,7 +14,7 @@ class CentresController
   # POST
   def self.create params
     @centre = Centre.new params["centre"]
-    @centre.save
+    @centre, @centre.save
   end
   
   def self.update params
