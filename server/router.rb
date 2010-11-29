@@ -116,6 +116,11 @@ class DaRouter
     :"tables/add"
   end
 
+  delete '/tables/:id.:format' do |id, format|
+    @@params.merge!({:id => id})
+    @table = TablesController.destroy(@@params)
+    format.nil? ? :"tables/index" : {:result => :ok}
+  end
 
   get 'tables/:id/edit.:format' do |id, format|
     @table = TablesController.edit({:id => id})
