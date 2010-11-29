@@ -4,20 +4,20 @@ require 'init/models.rb'
 require 'init/controllers.rb'
 
 class DaRouter
-  
+
   include DSL
   include CommonHelpers
 
   @@params = []
   @@extension = "html"
-  
+
   ######################### COUNTRIES #########################
-  
+
   get '/countries.:format' do
     @countries = CountriesController.index
     :"countries/index"
   end
-  
+
   # Country#show
   get '/countries/:id' do |key|
     # 0AsTunpthKrMxdEp5R1loYjBBcVhNQWVEc1BUZmZ1QUE
@@ -26,14 +26,14 @@ class DaRouter
     create_graph("#{@country.name}'s National Results", "country_graph", @country.runners)
     :"countries/show"
   end
-  
+
   # Routes for fetching states
   get '/states' do
     :"states/index"
   end
-  
+
   ######################### STATES #########################
-  
+
   get '/states/:key' do |key|
     # 0AsTunpthKrMxdEp5R1loYjBBcVhNQWVEc1BUZmZ1QUE
     @title = "State Report"
@@ -41,21 +41,21 @@ class DaRouter
     create_graph("#{@state.name}'s Results", "state_graph", @state.runners)
     :"states/show"
   end
-  
+
   post '/states/fetch' do
     @title = "State Report"
     @state = StatesController.show(@@params["country-key"])
     create_graph("#{@state.name}'s Results", "state_graph", @state.runners)
     :"states/show"
   end
-  
-  
+
+
   ######################### CENTRES #########################
 
   get 'centres/add.:format' do |format|
     :"centres/add"
   end
-  
+
   get 'centres/:id/edit.:format' do |id, format|
     @centre = CentresController.edit({:id => id})
     format.nil? ? :"centres/edit" : @centre
@@ -66,7 +66,7 @@ class DaRouter
     @centres = CentresController.index
     format.nil? ? :"centres/index" : @centres
   end
-  
+
   # Read action
   get '/centres/:id.:format' do |id, format|
     @centre = CentresController.show({:id => id})
@@ -112,6 +112,17 @@ class DaRouter
 
   ######################### TABLES #########################
 
+  get 'tables/add.:format' do |format|
+    :"tables/add"
+  end
+
+
+  get 'tables/:id/edit.:format' do |id, format|
+    @table = TablesController.edit({:id => id})
+    format.nil? ? :"tables/edit" : @table
+  end
+
+
   put 'tables/:id.:format' do |id , format|
 
     @@params.merge!({:id => id})
@@ -134,7 +145,7 @@ class DaRouter
     else
       params = @@params
     end
-    
+
     @table, success = TablesController.create params
 
     if success
@@ -172,11 +183,11 @@ class DaRouter
     path = env["PATH_INFO"]
     verb = env['REQUEST_METHOD']
     req_uri = env['REQUEST_URI']
-    
+
     @@params = Rack::Request.new(env).params
-    
+
     verb = @@params["_method"] unless @@params["_method"].nil?
-    
+
     # puts "\n\n *********   #{verb}"
     # 
     # puts "\n\n******************** Debugging params ********************"
@@ -184,8 +195,8 @@ class DaRouter
     #   puts params.inspect
     # end
     # puts "************************************************************\n\n"
-    
-    
+
+
     route, vals, extension = self.class.routes.match(verb, path)
     vals << extension if extension
     if route.nil?
@@ -200,12 +211,12 @@ class DaRouter
         else
           [200, {'Content-Type' => self.class.formated_content_type(extension), 'charset' => 'utf-8'}, self.class.formated_result(result,extension)]
         end
-        
+
       rescue Exception => e
         html = <<-HTML
-          <h1>Server Error!</h1>
-          <p>There was an error in the server!</p>
-          <p>#{e.message}</p>
+        <h1>Server Error!</h1>
+        <p>There was an error in the server!</p>
+        <p>#{e.message}</p>
         HTML
         puts "********************************** ERROR LOG  **********************************"
         puts "#{e.message}"

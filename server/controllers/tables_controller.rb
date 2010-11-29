@@ -7,6 +7,12 @@ class TablesController
     Table.find params[:id]
   end
   
+  
+  def self.edit params
+    Table.find params[:id]
+  end
+  
+  
   def self.new
     Table.new
   end
@@ -22,3 +28,4 @@ class TablesController
     return @table, @table.update_attributes(params["table"])
   end
 end
+

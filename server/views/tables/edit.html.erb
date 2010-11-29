@@ -1,0 +1,13 @@
+<h1>Editing table <%= %></h1>
+
+<form id="tables_form" name="tables_form" method="post" action="/centres/<%= @table.id %>">
+  <input id="_method" name="_method" type="hidden" value="PUT" />
+  
+  <p>
+    <strong>Centro: </strong> <%= select_tag "table[centre_id]", Centre.all, :id, :name, @table.centre_id %>
+  </p>
+  
+  <p>
+    <input type="submit" name="button" id="button" value="Actualizar" />
+  </p>
+</form>
