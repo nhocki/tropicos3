@@ -16,6 +16,14 @@ class City < ActiveRecord::Base
     runners
   end
   
+  def total_votes
+    sum = 0
+    runners.each do |key, value|
+      sum+=value
+    end
+    sum
+  end
+  
   def default_options
     {
       :methods => [:runners],

@@ -11,7 +11,14 @@
 
 <div id="panes">
   <h1>Countries Index</h1>
-
+  
+  <div class="list">
+    <% for c in @countries %>
+      <%= al_garete c.name, countries_path(c) %>
+    <% end %>
+  </div>
+  
+  
   <p>You've got here because you didn't provide a country key or the one you provided was invalid.</p>
 
   <p>If you need a key, feel free to use this one:

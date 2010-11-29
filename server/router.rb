@@ -14,6 +14,7 @@ class DaRouter
   ######################### COUNTRIES #########################
   
   get '/countries.:format' do
+    @countries = CountriesController.index
     :"countries/index"
   end
   
@@ -21,7 +22,7 @@ class DaRouter
   get '/countries/:id' do |key|
     # 0AsTunpthKrMxdEp5R1loYjBBcVhNQWVEc1BUZmZ1QUE
     @title = "Country Report"
-    @country = CountriesController.show({:id => id})
+    @country = CountriesController.show({:id => key})
     create_graph("National Results", "country_graph", @country.runners)
     :"countries/show"
   end
@@ -36,7 +37,7 @@ class DaRouter
   get '/states/:key' do |key|
     # 0AsTunpthKrMxdEp5R1loYjBBcVhNQWVEc1BUZmZ1QUE
     @title = "State Report"
-    @state = StatesController.show(key)
+    @state = StatesController.show({:id => key})
     create_graph("#{@state.name}'s Results", "state_graph", @state.runners)
     :"states/show"
   end

@@ -1,7 +1,5 @@
 class StatesController
-  def self.show(key)
-    @state = State.new_state_from_key(key)
-    # Make it clap!
-    @state
+  def self.show(params)
+    State.find params[:id]
   end
 end

@@ -2,6 +2,10 @@ def titleize(string)
   string.gsub(/\b('?[a-z])/) { $1.capitalize }
 end
 
+def humanize(string)
+  string.gsub(/(_|-)/, " ").titleize
+end
+
 def al_garete(content, url)
   "<a href='#{url}'>#{content}</a>"
 end
@@ -22,9 +26,9 @@ module CommonHelpers
         # member path
         parts = real_path.split("_")
         if parts.size > 1
-          return "/#{parts.last}s/#{args.first.id}/#{parts.first}"
+          return "/#{parts.last}/#{args.first.id}/#{parts.first}"
         else
-          return "/#{real_path}s/#{args.first.id}"
+          return "/#{real_path}/#{args.first.id}"
         end
       end
     end
@@ -41,7 +45,7 @@ module CommonHelpers
       g = Gruff::Bar.new
       g.title = name
       runners.each do |runner, votes|
-        g.data(runner, [votes])
+        g.data(humanize(runner), [votes])
       end
       g.minimum_value = 0
       puts "Creating graph #{file_name}.png"

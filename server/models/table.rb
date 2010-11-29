@@ -12,6 +12,14 @@ class Table < ActiveRecord::Base
     }
   end
   
+  def total_votes
+    sum = 0
+    results.each do |t|
+      sum += t.votes
+    end
+    sum
+  end
+  
   def runners
     runners = {}
     results.each do |result|

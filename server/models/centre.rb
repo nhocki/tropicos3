@@ -10,6 +10,14 @@ class Centre < ActiveRecord::Base
     {:include => :tables}
   end
   
+  def total_votes
+    sum = 0
+    tables.each do |t|
+      sum += t.total_votes
+    end
+    sum
+  end
+  
   def runners
     runners = {}
     tables.each do |table|
