@@ -2,13 +2,16 @@ def titleize(string)
   string.gsub(/\b('?[a-z])/) { $1.capitalize }
 end
 
+def al_garete(content, url)
+  "<a href='#{url}'>#{content}</a>"
+end
+
 module CommonHelpers
   def self.included(base)
     base.extend(ClassMethods)
   end
 
-  module ClassMethods
-    
+  module ClassMethods    
     def method_missing(method_name, *args, &block)
       super(method_name, *args, &block) unless method_name.to_s =~ /(url|path)/
       real_path = method_name.to_s.gsub(/_(url|path)/, "")
