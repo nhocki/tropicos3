@@ -16,8 +16,6 @@ class TablesController
     @table = Table.new params["table"]
     return @table, @table.save
   end
-end
-
 
   def self.update params
     @table = Table.find params[:id]
