@@ -95,7 +95,16 @@ class DaRouter
   # Update action
   put '/centres/:id.:format' do |id, format|
     @@params.merge!({:id => id})
-    @centre, success = CentresController.update(@@params)
+    if @@params["centre"].nil?
+      params = {}
+      params["centre"] = {}
+      @@params.each do |key, value|
+        params["centre"][key.to_sym] = value
+      end
+    else
+      params = @@params
+    end
+    @centre, success = CentresController.update(params)
     if success
       format.nil? ? :"centres/show" : @centre
     else
@@ -129,10 +138,17 @@ class DaRouter
 
 
   put 'tables/:id.:format' do |id , format|
-
     @@params.merge!({:id => id})
+    if @@params["table"].nil?
+      params = {}
+      params["table"] = {}
+      @@params.each do |key, value|
+        params["table"][key.to_sym] = value
+      end
+    else
+      params = @@params
+    end
     @table, success = TablesController.update(@@params)
-
     if success
       format.nil? ? :"tables/show" : @table
     else

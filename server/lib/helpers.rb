@@ -3,7 +3,7 @@ def titleize(string)
 end
 
 def humanize(string)
-  string.gsub(/(_|-)/, " ").titleize
+  string.gsub(/(_|-)/, " ")#.titleize
 end
 
 def al_garete(content, url, options = {})

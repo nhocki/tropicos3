@@ -1,4 +1,4 @@
-<h1>Editing table <%= %></h1>
+<h1>Editing <%= @table.name %></h1>
 
 <form id="tables_form" name="tables_form" method="post" action="/tables/<%= @table.id %>">
   <input id="_method" name="_method" type="hidden" value="PUT" />
@@ -6,6 +6,23 @@
   <p>
     <strong>Centro: </strong> <%= select_tag "table[centre_id]", Centre.all, :id, :name, @table.centre_id %>
   </p>
+  
+  <% if @table.runners.any? %>
+  
+    <% @table.runners.each do |r, value| %>
+    <p>
+      <strong><%= humanize r %></strong>
+      <input type="text" name="table[runners][<%= humanize r %>]" id="table[runners][<%= humanize r %>]" value="<%= value %>"/>
+    </p>
+    <% end %>
+  <% else %>
+    <% for r in Runner.all %>
+    <p>
+      <strong><%= r.name %></strong>
+      <input type="text" name="table[runners][<%= r.name %>]" id="table[runners][<%= r.name %>]"/>
+    </p>
+    <% end %>
+  <% end %>
   
   <p>
     <input type="submit" name="button" id="button" value="Actualizar" />

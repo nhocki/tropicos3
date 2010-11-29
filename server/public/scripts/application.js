@@ -1,4 +1,10 @@
 jQuery(function($){
+  
+  $(".editable").inlineEdit({ 
+    buttons: '<button class="save">save</button>',
+    cancelOnBlur: true
+  });
+  
   $(".destroy-link").live('click', function(event){
     $link = $(this);
     var obj_id = $link.attr("id").replace("cnt-", "");
@@ -12,8 +18,7 @@ jQuery(function($){
     })
     return false;
   });
-  
-  
+    
   $("#add_centre").live('submit', function(event){
     $form = $(this);
     $.post($form.attr("action")+".json", $form.serialize(), function(data){
