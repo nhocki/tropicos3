@@ -1,14 +1,32 @@
 <h1>Centres index</h1>
 
-<%= centres_url %>
+<p>You can easily <%= al_garete "add a new center", "#add-new-center" %> from here.</p>
 
-<div class="list">
+<div class="list" id="centres">
 	<% for centre in @centres %>
 	<div class="centre">
 		<h4><%= centre.name %></h4>
-		<%= al_garete "Centre", centres_url(centre) %>
-		<%= al_garete "Edit", edit_centres_url(centre) %>
-		<%= al_garete "Destroy", centres_url(centre), :class => "destroy-link", :id => "cnt-#{centre.id}" %>
+		<p>
+		  <%= al_garete "Centre", centres_url(centre) %>
+		  <%= al_garete "Edit", edit_centres_url(centre) %>
+		  <%= al_garete "Destroy", centres_url(centre), :class => "destroy-link", :id => "cnt-#{centre.id}" %>
+		</p>
 	</div>
 	<% end %>
 </div>
+
+<h2 id="add-new-center">Adding a new centre</h2>
+<form id="add_centre" name="centres_form" method="post" action="/centres">
+  <input id="format" name="format" type="hidden" value=".json" />
+  <p>
+    <strong>Nombre:</strong>
+    <input type="text" name="centre[name]" id="new-centre-name"/>
+  </p>
+
+  <p>
+    <strong>Ciudad: </strong> <%= select_tag "centre[city_id]", City.all, :id, :name %>
+  </p>
+  <p>
+    <input type="submit" name="button" id="button" value="Guardar" />
+  </p>
+</form>
