@@ -1,11 +1,20 @@
-<h1>Adding a new Table</h1>
+<div class="list">
+  <h1>Adding a new Table</h1>
 
-<form id="tables_form" name="tables_form" method="post" action="/tables">
+  <form id="tables_form" name="tables_form" method="post" action="/tables">
 
-  <p>
-    <strong>Centro: </strong> <%= select_tag "table[centre_id]", Centre.all, :id, :name %>
-  </p>
-  <p>
-    <input type="submit" name="button" id="button" value="Crear" />
-  </p>
-</form>
+    <p>
+      <strong>Centro: </strong> <%= select_tag "table[centre_id]", Centre.all, :id, :name %>
+    </p>
+
+    <% for r in Runner.all %>
+    <p>
+      <strong><%= r.name %></strong>
+      <input type="text" name="table[runners][<%= r.name %>]" id="table[runners][<%= r.name %>]"/>
+    </p>
+    <% end %>
+    <p>
+      <input type="submit" name="button" id="button" value="Crear" />
+    </p>
+  </form>
+</div>

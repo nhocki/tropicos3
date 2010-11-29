@@ -7,7 +7,7 @@ module ModelExtensions
   end
   
   def to_s
-    name.gsub(/\s/, "_")
+    return name.gsub(/\s/, "_")
   end
   
   def to_xml(options = {}, &block)
