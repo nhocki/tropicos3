@@ -69,15 +69,17 @@ module CommonHelpers
     end
     
     def create_graph (name, file_name, runners)
-      g = Gruff::Bar.new
-      g.title = name
-      runners.each do |runner, votes|
-        g.data(humanize(runner), [votes])
+      begin
+        g = Gruff::Bar.new
+        g.title = name
+        runners.each do |runner, votes|
+          g.data(humanize(runner), [votes])
+        end
+        g.minimum_value = 0
+        puts "Creating graph #{file_name}.png"
+        g.write("public/images/#{file_name}.png")
+        true
       end
-      g.minimum_value = 0
-      puts "Creating graph #{file_name}.png"
-      g.write("public/images/#{file_name}.png")
-      true
     end
     
     def final_result(body, template = :template)

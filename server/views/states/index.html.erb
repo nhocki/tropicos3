@@ -1,9 +1,10 @@
 <h1>States Index</h1>
 
-<p>
-  You've got here because you didn't provide a state key or the one you provided was invalid.
-</p>
-
-<p>If you need a key, feel free to use this one:
-  <span class="sample-key">0AsTunpthKrMxdFBkeVZ0SzlDMWlDQ3I4MFZJZndMR1E</span>
-</p>
+<% for state in @states %>
+  <p>
+  <strong><%= state.name %></strong>
+  <%= al_garete "View", states_path(state) %>
+  <%= al_garete "Edit", edit_states_path(state) %>
+  <%= al_garete "Destroy" , states_url(state), :class => "destroy-link", :id => "cnt-#{state.id}" %>
+  </p>
+<% end %>

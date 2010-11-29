@@ -27,12 +27,15 @@ class DaRouter
     :"countries/show"
   end
   
+  
+  ######################### STATES #########################
+
   # Routes for fetching states
   get '/states' do
+    @states = StatesController.index
     :"states/index"
   end
   
-  ######################### STATES #########################
   
   get '/states/:key' do |key|
     # 0AsTunpthKrMxdEp5R1loYjBBcVhNQWVEc1BUZmZ1QUE
