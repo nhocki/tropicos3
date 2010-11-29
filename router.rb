@@ -89,6 +89,19 @@ class DaRouter
     format.nil? ? :"centres/index" : @centre
   end
   
+  
+  ######################### TABLES #########################
+  
+  get '/tables.:format' do |format|
+    @tables = TablesController.index
+    format.nil? ? :"tables/index" : @tables
+  end
+  
+  get '/tables/:id.:format' do |id, format|
+    @table = TablesController.show({:id => id})
+    format.nil? ? :"tables/show" : @table
+  end
+  
   ######################### STATIC ROUTES #########################
   get '/about-us' do
     :"static/about-us"
