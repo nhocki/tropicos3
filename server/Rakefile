@@ -120,6 +120,12 @@ namespace :db do
     Centre.all.each do |centre|
       3.times { centre.tables.create(:centre_id => centre.id) }
     end
-
+    
+    Result.create([
+      {:runner_id => 1, :table_id => 1, :votes => 200},
+      {:runner_id => 2, :table_id => 1, :votes => 10},
+      {:runner_id => 3, :table_id => 1, :votes => 110}
+    ])
+    
   end
 end
