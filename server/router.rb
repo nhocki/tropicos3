@@ -52,6 +52,15 @@ class DaRouter
   
   ######################### CENTRES #########################
 
+  get 'centres/add.:format' do |format|
+    :"centres/add"
+  end
+  
+  get 'centres/:id/edit.:format' do |id, format|
+    @centre = CentresController.edit({:id => id})
+    format.nil? ? :"centres/edit" : @centre
+  end
+
   # Index action
   get '/centres.:format' do |format|
     @centres = CentresController.index
@@ -63,19 +72,22 @@ class DaRouter
     @centre = CentresController.show({:id => id})
     format.nil? ? :"centres/show" : @centre
   end
-  
-  get 'centres/add.:format' do |format|
-    :"centres/add"
-  end
-  
+
   # Create action
   post '/centres.:format' do |format|
-    params = {}
-    params[:centre] = {}
-    @@params.each do |key, value|
-      params[:centre][key.to_sym] = value
+    if @@params["centre"].nil?
+      params = {}
+      params["centre"] = {}
+      @@params.each do |key, value|
+        params["centre"][key.to_sym] = value
+      end
+    else
+      params = @@params
     end
     @centre, success = CentresController.create(params)
+    
+    puts @centre
+    
     if success
       format.nil? ? :"centres/show" : @centre
     else
@@ -132,7 +144,20 @@ class DaRouter
     path = env["PATH_INFO"]
     verb = env['REQUEST_METHOD']
     req_uri = env['REQUEST_URI']
+    
     @@params = Rack::Request.new(env).params
+    
+    verb = @@params["_method"] unless @@params["_method"].nil?
+    
+    # puts "\n\n *********   #{verb}"
+    # 
+    # puts "\n\n******************** Debugging params ********************"
+    # @@params.each do |params, value|
+    #   puts params.inspect
+    # end
+    # puts "************************************************************\n\n"
+    
+    
     route, vals, extension = self.class.routes.match(verb, path)
     vals << extension if extension
     if route.nil?

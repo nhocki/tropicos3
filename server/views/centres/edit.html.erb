@@ -1,0 +1,18 @@
+<h1>Editing center <%= @centre.name %></h1>
+
+<form id="centres_form" name="centres_form" method="post" action="/centres/<%= @centre.id %>">
+  <input id="_method" name="_method" type="hidden" value="PUT" />
+  
+  <p>
+    <strong>Nombre:</strong>
+    <input type="text" name="centre[name]" id="name" value="<%= @centre.name %>"/>
+  </p>
+
+  <p>
+    <strong>Ciudad: </strong> <%= select_tag "centre[city_id]", City.all, :id, :name, @centre.city_id %>
+  </p>
+  
+  <p>
+    <input type="submit" name="button" id="button" value="Guardar" />
+  </p>
+</form>

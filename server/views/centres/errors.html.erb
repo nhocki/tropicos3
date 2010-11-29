@@ -1,0 +1,11 @@
+<h1>There were some errors with your data!</h1>
+
+<p>We're really sorry that you've lost your input! We had no time to do this right!</p>
+
+<ul>
+  <% @centre.errors.each do |key, value| %>
+    <li><strong><%= titleize key.to_s %>:</strong> <%= value %></li>
+  <% end %>
+</ul>
+
+<p>You can <%= al_garete "go back", add_centres_path %> and fix that</p>

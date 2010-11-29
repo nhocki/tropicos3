@@ -10,6 +10,18 @@ def al_garete(content, url)
   "<a href='#{url}'>#{content}</a>"
 end
 
+def select_tag(name, collection, value_method, name_method, selected_value)
+  ret = "<select id=#{name} name=#{name}>"
+  collection.each do |item|
+    if item.send(value_method) != selected_value
+      ret += "<option value=#{item.send(value_method)}>#{item.send(name_method)}</option>"
+    else
+      ret += "<option value=#{item.send(value_method)} selected='selected'>#{item.send(name_method)}</option>"
+    end
+  end
+  ret += "</select>"
+end
+
 module CommonHelpers
   def self.included(base)
     base.extend(ClassMethods)

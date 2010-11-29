@@ -1,0 +1,15 @@
+<h1>Adding a new centre</h1>
+
+<form id="centres_form" name="centres_form" method="post" action="/centres">
+  <p>
+    <strong>Nombre:</strong>
+    <input type="text" name="centre[name]" id="name"/>
+  </p>
+
+  <p>
+    <strong>Ciudad: </strong> <%= select_tag "centre[city_id]", City.all, :id, :name %>
+  </p>
+  <p>
+    <input type="submit" name="button" id="button" value="Guardar" />
+  </p>
+</form>

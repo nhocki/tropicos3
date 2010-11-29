@@ -7,12 +7,21 @@ class CentresController
     Centre.find params[:id]
   end
   
+  def self.edit params
+    Centre.find params[:id]
+  end
+  
   def self.new
     Centre.new
   end
   
   # POST
   def self.create params
+    # puts "\n\n******************** Debugging params ********************"
+    # params.each do |param|
+    #   puts param.inspect
+    # end
+    # puts "************************************************************\n\n"
     @centre = Centre.new params["centre"]
     return @centre, @centre.save
   end
