@@ -1,0 +1,188 @@
+*{outline: none;}
+body{
+  font-family: 'Molengo', arial, serif; 
+  background-image:url('../images/background.png');
+  background-repeat:repeat-x;
+}
+
+header, footer {display: block; clear: both;}
+
+h1.title {text-align: center;}
+.graph{width: 500px; margin: 0 auto; float:left;}
+#graphs{width: 950px; margin: 0 auto; padding-top: 80px;}
+
+#search-field { 
+  position:relative;
+  margin:0 auto 0 auto; width:550px;
+}
+#country-key{
+  border:1px solid #999999;
+  font-size:24px;
+  padding:10px 1px 1px;
+  vertical-align:middle;
+  width:500px;
+  height:20px;
+}
+div.text_clear_button { background:transparent url(clear_cross.png) no-repeat 0 0; width:15px; height:15px; margin:0; padding:0; z-index:2; position:absolute; cursor:pointer;}
+label { 
+  font-size:24px;
+  position:absolute; 
+  bottom:0; 
+  left:185px; 
+  z-index: 3;
+}
+
+.loader {
+  display: none;
+  margin:0 auto 0 auto; width:100px;
+}
+
+#boton{
+  margin:0 auto 30px; 
+  width:130px;
+  text-decoration:underline;	
+}
+
+#console{display: none;}
+.cargar-datos{
+  font-size:12px;
+  color:#000000;
+  cursor:pointer;
+  height:30px;
+  margin-top:10px;
+  outline:0 none;
+  vertical-align:top;
+}
+
+.image-title {
+  margin:0 auto 0 auto; width:390px;
+}
+
+.votes{float: right;}
+
+#panes, #nav {display: none;}
+
+#footer{clear: both; width: 600px; margin: 0 auto; text-align: center;}
+#footer a{text-align: center;}
+
+/*Estilos de el pane ---------------------------------------------------------------------------*/
+
+#nav {
+  background:#ddd url(http://static.flowplayer.org/img/global/gradient/h300_reverse.png);
+  border-bottom:1px solid #CCCCCC;
+  height:80px;	
+  width:960px;
+  margin:0 auto;
+}
+
+#nav ul {
+  width:750px;
+  font-color:#FFFFFF;
+  margin:0 auto;
+}
+
+#nav li {
+  opacity: 0.3;
+  border-right:1px solid #ddd;
+  float:left;
+  padding-left:1px;
+  width:175px;
+  list-style-type:none;
+  text-align:center;
+  margin-top:0px;
+  cursor: pointer;
+}
+
+#nav li:hover {
+  opacity: 1;
+}
+
+#nav li.current {
+  opacity: 1;
+}
+
+#nav a {
+  color:#333333;
+  display:block;
+  padding:17px;
+  position:relative;
+  word-spacing:-2px;
+  font-size:11px;		
+  height:156px;
+  text-decoration:none;
+}	
+
+#nav a.current {
+  background:url(http://static.flowplayer.org/tools/img/tabs/down_large.jpg);	
+}
+
+#nav img {
+  background-color:#fff;
+  border:1px solid #ccc;
+  margin:3px auto;
+  padding:4px;
+  display:block;
+}
+
+#nav strong {
+  display:block;		
+  font-size:13px;
+}
+
+/* panes */
+#panes {
+  background:#fff url(http://static.flowplayer.org/img/global/gradient/h300_reverse.png);
+  border-color:#ccc;
+  border-style:solid;
+  border-width:1px 1px 1px;
+  height:280px;
+  overflow:auto;
+  width:960px;
+  margin:0 auto -20px;
+  padding-bottom:20px;
+
+  /* must be relative so the individual panes can be absolutely positioned */
+  position:relative;
+}
+
+/* crossfading effect needs absolute positioning from the elements */
+#panes > div {
+  display:none;		
+  position:relative;
+  margin:0 auto;
+  top:20px;
+  left:20px;
+  font-size:13px;
+  color:#444;	
+  width:700px; 
+}
+
+#resultados-nacionales{
+  margin: 0 auto;
+  left: 30%;
+  text-align: center;
+}
+
+#panes img {
+  float:left;
+  margin-right:20px;		
+}
+
+#panes p.more {
+  color:#000;
+  font-weight:bold;
+  font-size:13px;
+}
+
+#panes h3 {
+  margin:0 0 -5px 0;
+  font-size:22px;
+  font-weight:normal;
+}
+
+.overlay {
+  display:none;
+  width:500px;
+  padding:20px;
+  background-color:#ddd;
+}

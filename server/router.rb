@@ -11,22 +11,17 @@ class DaRouter
   @@params = []
   @@extension = "html"
   
-  get '/country.:format' do
+  ######################### COUNTRIES #########################
+  
+  get '/countries.:format' do
     :"countries/index"
   end
   
   # Country#show
-  get '/country/:id' do |key|
+  get '/countries/:id' do |key|
     # 0AsTunpthKrMxdEp5R1loYjBBcVhNQWVEc1BUZmZ1QUE
     @title = "Country Report"
     @country = CountriesController.show({:id => id})
-    create_graph("National Results", "country_graph", @country.runners)
-    :"countries/show"
-  end
-  
-  post '/country/fetch' do
-    @title = "Country Report"
-    @country = CountriesController.show(@@params["country-key"])
     create_graph("National Results", "country_graph", @country.runners)
     :"countries/show"
   end
@@ -36,7 +31,8 @@ class DaRouter
     :"states/index"
   end
   
-  # Country#show
+  ######################### STATES #########################
+  
   get '/states/:key' do |key|
     # 0AsTunpthKrMxdEp5R1loYjBBcVhNQWVEc1BUZmZ1QUE
     @title = "State Report"
@@ -55,6 +51,7 @@ class DaRouter
   
   ######################### CENTRES #########################
 
+  # Index action
   get '/centres.:format' do |format|
     @centres = CentresController.index
     format.nil? ? :"centres/index" : @centres

@@ -1,0 +1,15 @@
+*~
+*.BACKUP*
+*.BASE*
+*.LOCAL*
+*.REMOTE*
+log/*.log
+*.orig
+*#
+db/*.sqlite3
+.idea/*
+.idea/
+db/schema.rb
+.DS_Store
+.svn
+config/database.yml
