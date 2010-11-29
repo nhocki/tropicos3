@@ -3,8 +3,12 @@
 <%= tables_url %>
 
 <div class="list">
-  <% for table in @tables %>
-    <%= table_url(table) %>
-    <%= edit_table_url(table) %>
-  <% end %>
+	<% for table in @tables %>
+	<div class="table">
+		<b>Table on centre <%= table.centre_id %></b>
+		<%= al_garete "Table", tables_url(table) %>
+		<%= al_garete "Edit", edit_tables_url(table) %>
+		<%= al_garete "Destroy" , tables_url(table), :class => "destroy-link", :id => "cnt-#{table.id}" %>
+	</div>
+	<% end %>
 </div>

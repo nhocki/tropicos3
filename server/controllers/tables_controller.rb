@@ -12,7 +12,6 @@ class TablesController
     Table.find params[:id]
   end
   
-  
   def self.new
     Table.new
   end
@@ -27,5 +26,12 @@ class TablesController
     @table = Table.find params[:id]
     return @table, @table.update_attributes(params["table"])
   end
+  
+  
+  def self.destroy params
+    @table = Table.find params[:id]
+    return @table, @table.destroy
+  end
+  
 end
 
