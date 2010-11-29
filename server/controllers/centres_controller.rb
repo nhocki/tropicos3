@@ -30,4 +30,9 @@ class CentresController
     @centre = Centre.find params[:id]
     return @centre, @centre.update_attributes(params["centre"])
   end
+  
+  def self.destroy params
+    @centre = Centre.find params[:id]
+    return @centre, @centre.destroy
+  end
 end

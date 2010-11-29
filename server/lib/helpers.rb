@@ -6,11 +6,15 @@ def humanize(string)
   string.gsub(/(_|-)/, " ").titleize
 end
 
-def al_garete(content, url)
-  "<a href='#{url}'>#{content}</a>"
+def al_garete(content, url, options = {})
+  opts = ""
+  options.each do |value, key|
+    opts+= "#{value} = '#{key}'"
+  end
+  "<a href='#{url}' #{opts}>#{content}</a>"
 end
 
-def select_tag(name, collection, value_method, name_method, selected_value)
+def select_tag(name, collection, value_method, name_method, selected_value = nil)
   ret = "<select id=#{name} name=#{name}>"
   collection.each do |item|
     if item.send(value_method) != selected_value

@@ -14,6 +14,9 @@ a img{border: none;}
 
 .list {text-align: left;}
 
+#alert {padding-top: 20px; display: none; text-align: center; font-weight: bold; color: #000; position: fixed; top: 0; left: 0; right: 0; height: 30px;}
+.success{background: rgba(0, 255, 0, 0.8);}
+.failed {background: rgba(255, 0, 0, 0.8);}
 
 h1.title {text-align: center;}
 .graph{width: 500px; margin: 0 auto; float:left;}

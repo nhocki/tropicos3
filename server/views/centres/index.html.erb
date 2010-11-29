@@ -4,8 +4,11 @@
 
 <div class="list">
   <% for centre in @centres %>
-    <h4><%= centre.name %></h4>
-    <%= centre_url(centre) %>
-    <%= edit_centre_url(centre) %>
+    <div class="centre">
+      <h4><%= centre.name %></h4>
+      <%= al_garete "Ver centro", centres_url(centre) %>
+      <%= al_garete "Editar centro", edit_centres_url(centre) %>
+      <%= al_garete "Eliminar centro", centres_url(centre), :class => "destroy-link", :id => "cnt-#{centre.id}" %>
+      </div>
   <% end %>
 </div>
