@@ -226,25 +226,27 @@ jQuery.extend({
     var mlist = $.ModelListener({
       // Model Listener
       data_loaded : function(){
-        view.add_graph_separator("<div style='clear:both;'><h1>Resultados Totales a Nivel Nacional</h1></div>");
-        data = new Array();
+        view.data_loaded();
         
-        var piedad = sites['piedad'];
-        var reyes = sites['reyes'];
-        var jojoy = sites['jojoy'];
-        
-        data.push( [ 'piedad (' + piedad + ')', piedad ] );
-        data.push( [ 'reyes (' + reyes + ')', reyes ] );
-        data.push( [ 'jojoy (' + jojoy + ')', jojoy ] );
-        var g_label = "resultados-nacionales";
-        var g_name = "Resultados a Nivel Nacional";
-        view.build_pie(data, g_label, g_name);
-        view.add_graph_separator("<div style='clear:both;'><h1>Resultados Detallados Nivel Nacional</h1></div>");
-        build_country_tab('colombia');
-        view.add_graph_separator("<div style='clear:both;'><h1>Gráficos de candidatos</h1></div>");
-        build_candidates_tabs();
-        $("#panes, #nav").show();
-        $("#nav ul").tabs("#panes > div", {effect: 'fade', fadeOutSpeed: 400});
+        // view.add_graph_separator("<div style='clear:both;'><h1>Resultados Totales a Nivel Nacional</h1></div>");
+        //         data = new Array();
+        // 
+        //         var piedad = sites['piedad'];
+        //         var reyes = sites['reyes'];
+        //         var jojoy = sites['jojoy'];
+        // 
+        //         data.push( [ 'piedad (' + piedad + ')', piedad ] );
+        //         data.push( [ 'reyes (' + reyes + ')', reyes ] );
+        //         data.push( [ 'jojoy (' + jojoy + ')', jojoy ] );
+        //         var g_label = "resultados-nacionales";
+        //         var g_name = "Resultados a Nivel Nacional";
+        //         view.build_pie(data, g_label, g_name);
+        //         view.add_graph_separator("<div style='clear:both;'><h1>Resultados Detallados Nivel Nacional</h1></div>");
+        //         build_country_tab('colombia');
+        //         view.add_graph_separator("<div style='clear:both;'><h1>Gráficos de candidatos</h1></div>");
+        //         build_candidates_tabs();
+        //         $("#panes, #nav").show();
+        //         $("#nav ul").tabs("#panes > div", {effect: 'fade', fadeOutSpeed: 400});
       },
 
       depto_loaded : function(depto){

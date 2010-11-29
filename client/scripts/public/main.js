@@ -9,9 +9,9 @@ function inputSupportsType(test){
 }
 
 function log(msj){
-  //$console.append("----------------- <br />");
-  //$console.append(msj);
-  //$console.append("<br />");
+  // $console.append("----------------- <br />");
+  // $console.append(msj);
+  // $console.append("<br />");
 }
 
 $(function(){
