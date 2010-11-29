@@ -14,6 +14,11 @@ class TablesController
   # POST
   def self.create params
     @table = Table.new params["table"]
-    @table.save
+    return @table, @table.save
+  end
+
+  def self.update params
+    @table = Table.find params[:id]
+    return @table, @table.update_attributes(params["table"])
   end
 end

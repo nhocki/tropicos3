@@ -85,16 +85,13 @@ class DaRouter
       params = @@params
     end
     @centre, success = CentresController.create(params)
-    
-    puts @centre
-    
     if success
       format.nil? ? :"centres/show" : @centre
     else
       format.nil? ? :"centres/errors" : @centre.errors
     end
   end
-  
+
   # Update action
   put '/centres/:id.:format' do |id, format|
     @@params.merge!({:id => id})
@@ -105,36 +102,64 @@ class DaRouter
       format.nil? ? :"centres/errors" : @centre.errors
     end
   end
-  
+
   # Destroy action
   delete '/centres/:id.:format' do |id, format|
     @@params.merge!({:id => id})
     @centre = CentresController.update(@@params)
     format.nil? ? :"centres/index" : @centre
   end
-  
-  
+
+
   ######################### TABLES #########################
-  
+
+  put 'tables/:id.:format' do |id , format|
+
+    @@params.merge!({:id => id})
+    @table, success = TablesController.update(@@params)
+
+    if success
+      format.nil? ? :"tables/show" : @table
+    else
+      format.nil? ? :"tables/errors" : @table.errors
+    end
+  end
+
+  post '/tables.:format' do |format|
+
+    params = {}
+    params[:table] = {}
+    @@params.each do |key , value|
+      params[:table][key.to_sym] = value
+    end
+    @table, success = TablesController.create params
+
+    if success
+      format.nil? ? :"tables/show" : @table
+    else
+      format.nil? ? :"tables/errors" : @table.errors
+    end
+  end  
+
   get '/tables.:format' do |format|
     @tables = TablesController.index
     format.nil? ? :"tables/index" : @tables
   end
-  
+
   get '/tables/:id.:format' do |id, format|
     @table = TablesController.show({:id => id})
     format.nil? ? :"tables/show" : @table
   end
-  
+
   ######################### STATIC ROUTES #########################
   get '/admin' do
     :"static/admin"
   end
-  
+
   get '/about-us' do
     :"static/about-us"
   end
-  
+
   get '/' do
     :"static/index"
   end
