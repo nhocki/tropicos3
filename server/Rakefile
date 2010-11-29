@@ -123,9 +123,9 @@ namespace :db do
     end
     
     Result.create([
-      {:runner_id => 1, :table_id => 1, :votes => 200},
-      {:runner_id => 2, :table_id => 1, :votes => 10},
-      {:runner_id => 3, :table_id => 1, :votes => 110}
+      {:runner_id => 1, :table_id => 1, :votes => 002},
+      {:runner_id => 2, :table_id => 1, :votes => 100},
+      {:runner_id => 3, :table_id => 1, :votes => 011}
     ])
     
   end
