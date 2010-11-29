@@ -110,7 +110,6 @@ class DaRouter
     format.nil? ? :"centres/index" : @centre
   end
 
-
   ######################### TABLES #########################
 
   put 'tables/:id.:format' do |id , format|
@@ -126,12 +125,16 @@ class DaRouter
   end
 
   post '/tables.:format' do |format|
-
-    params = {}
-    params[:table] = {}
-    @@params.each do |key , value|
-      params[:table][key.to_sym] = value
+    if @@params["table"].nil?
+      params = {}
+      params["table"] = {}
+      @@params.each do |key, value|
+        params["table"][key.to_sym] = value
+      end
+    else
+      params = @@params
     end
+    
     @table, success = TablesController.create params
 
     if success
