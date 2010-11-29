@@ -1,1 +1,5 @@
-<h1>Results in table <%=  %> on centre <%= @table.centre_id %></h1>
+<h1>Results from table <%=  %> on centre <%= @table.centre_id %></h1>
+
+<% for runner in @table.runners %>
+  *
+<% end %>

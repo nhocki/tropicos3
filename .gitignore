@@ -1,1 +1,1 @@
-db/management/*.sqlite3
+server/db/*.*
