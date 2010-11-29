@@ -1,5 +1,10 @@
 <h1>Results in <%= @centre.name %></h1>
 
 <% for runner in @centre.runners %>
-  
+  <p>
+    <strong><%= humanize runner.first %> </strong>: 
+    <%= runner.second %>
+  </p>
 <% end %>
+
+<img src="/public/images/centre_graph.png" title="National Results" />

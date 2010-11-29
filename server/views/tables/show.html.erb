@@ -1,5 +1,9 @@
 <h1>Results in table <%= @table.id  %> from <%= @table.centre.name %></h1>
 <% for runner in @table.runners %>
-  <h4><%= humanize runner.first %> </h4>
-  <%= runner.second %>
+  <p>
+    <strong><%= humanize runner.first %> </strong>: 
+    <%= runner.second %>
+  </p>
 <% end %>
+
+<img src="/public/images/table_graph.png" title="National Results" />

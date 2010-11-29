@@ -70,6 +70,7 @@ class DaRouter
   # Read action
   get '/centres/:id.:format' do |id, format|
     @centre = CentresController.show({:id => id})
+    create_graph("#{@centre.name}'s National Results", "centre_graph", @centre.runners)
     format.nil? ? :"centres/show" : @centre
   end
 
@@ -128,6 +129,7 @@ class DaRouter
   delete '/tables/:id.:format' do |id, format|
     @@params.merge!({:id => id})
     @table = TablesController.destroy(@@params)
+    create_graph("#{@table.name}'s National Results", "table_graph", @table.runners)
     format.nil? ? :"tables/index" : {:result => :ok}
   end
 
