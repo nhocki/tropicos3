@@ -64,6 +64,10 @@ class DaRouter
     format.nil? ? :"centres/show" : @centre
   end
   
+  get 'centres/add.:format' do |format|
+    :"centres/add"
+  end
+  
   # Create action
   post '/centres.:format' do |format|
     params = {}
