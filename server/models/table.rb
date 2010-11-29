@@ -7,12 +7,12 @@ class Table < ActiveRecord::Base
   has_many :results
 
   def name
-    "Table #{id}"
+    "Table ##{id} on centre #{centre.id}"
   end
 
   def default_options
     {
-      :methods => [:runners]
+      :methods => [:runners, :name]
     }
   end
   

@@ -153,8 +153,6 @@ class DaRouter
     
     @table, success = TablesController.create params
 
-    
-
     if success
       format.nil? ? :"tables/show" : @table
     else

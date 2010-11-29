@@ -1,14 +1,32 @@
 <h1>Tables index</h1>
 
-<%= tables_url %>
+<p>You can easily <%= al_garete "add a new table", "#add-new-table" %> from here.</p>
 
-<div class="list">
+<div class="list" id="tables">
 	<% for table in @tables %>
 	<div class="table">
-		<b>Table on centre <%= table.centre_id %></b>
-		<%= al_garete "Table", tables_url(table) %>
+		<strong><%= table.name %></strong>
+		<%= al_garete "View", tables_url(table) %>
 		<%= al_garete "Edit", edit_tables_url(table) %>
 		<%= al_garete "Destroy" , tables_url(table), :class => "destroy-link", :id => "cnt-#{table.id}" %>
 	</div>
 	<% end %>
+</div>
+
+<div class="list" id="add-new-table">
+  <h1>Adding a new Table</h1>
+  <form id="add_table" name="tables_form" method="post" action="/tables">
+    <p>
+      <strong>Centro: </strong> <%= select_tag "table[centre_id]", Centre.all, :id, :name %>
+    </p>
+    <% for r in Runner.all %>
+    <p>
+      <strong><%= r.name %></strong>
+      <input class="runn" type="text" name="table[runners][<%= r.name %>]" id="table[runners][<%= r.name %>]"/>
+    </p>
+    <% end %>
+    <p>
+      <input type="submit" name="button" id="button" value="Crear" />
+    </p>
+  </form>
 </div>
