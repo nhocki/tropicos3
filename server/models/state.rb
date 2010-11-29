@@ -3,6 +3,8 @@ class State < ActiveRecord::Base
   belongs_to :country
   has_many :cities
   
+  include ModelExtensions
+  
   def runners
     runners = {}
     cities.each do |city|
@@ -12,6 +14,13 @@ class State < ActiveRecord::Base
       end
     end
     runners
+  end
+  
+  def default_options
+    {
+      :methods => [:runners],
+      :include => [:cities]
+    }
   end
 end
 

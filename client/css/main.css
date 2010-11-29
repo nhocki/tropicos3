@@ -1,3 +1,4 @@
+body, h1, p, h2, h3, h4, div, span, th, td, tr, tbody, table {font-family: 'Inconsolata', arial, serif;}
 *{outline: none;}
 body{
   font-family: 'Molengo', arial, serif; 
@@ -6,6 +7,13 @@ body{
 }
 
 header, footer {display: block; clear: both;}
+
+#fork-us {position: fixed; top: 0; left: 0;}
+
+a img{border: none;}
+
+header, footer {display: block; clear: both;}
+.list {text-align: left;}
 
 h1.title {text-align: center;}
 .graph{width: 500px; margin: 0 auto; float:left;}
@@ -37,10 +45,23 @@ label {
   margin:0 auto 0 auto; width:100px;
 }
 
+#panes {width: 800px; margin: 0 auto;}
+
+#panes ul{
+	list-style:none;
+}
+#panes li{
+
+}
+.sample-key {text-shadow: 1px 1px rgba(0, 0, 0, 0.3);}
+
 #boton{
-  margin:0 auto 30px; 
+  margin:10px auto 50px; 
   width:130px;
-  text-decoration:underline;	
+  text-decoration:underline;
+  font-size:18px;
+  font-family: 'Molengo', arial, serif; 
+  text-align: center;
 }
 
 #console{display: none;}
@@ -65,7 +86,7 @@ label {
 #footer{clear: both; width: 600px; margin: 0 auto; text-align: center;}
 #footer a{text-align: center;}
 
-/*Estilos de el pane ---------------------------------------------------------------------------*/
+.centered {text-align: center;}
 
 #nav {
   background:#ddd url(http://static.flowplayer.org/img/global/gradient/h300_reverse.png);
@@ -186,3 +207,5 @@ label {
   padding:20px;
   background-color:#ddd;
 }
+/*Estilos de el pane ---------------------------------------------------------------------------*/
+#country-sample-key {text-shadow: 1px 1px rgba(0, 0, 0, 0.3);}

@@ -25,17 +25,18 @@
 </head>
 
 <body>
-  <div id="fork-us">
-    <a href="https://github.com/nhocki/tropicos3" target="_blank"><img src="images/forkme.png"></img></a>
-  </div>
+  <header>
+    
+  </header>
   
   <div id="content">
-    <div class="image-title"><a href="index.html"><img src = "images/logo.png" alt="Ballotox"></a></div>
-
-
-    <div id="navigation" class="centered">
-      Resultados Nacionales - 
-      Sección de Administración 
+    <div class="image-title"><img src = "images/logo.png" alt="Ballotox"></div>
+    <div id="search-field">
+      <label for="country-key"> Ingresa el key</label> <br />
+      <input type="text" id="country-key" name="country-key" size="50"> </input>
+    </div>
+    <div id="boton">
+      <p>Cargar Datos</p>
     </div>
     
     <div class="loader"><p><img src="images/108.gif" /></p><p>Cargando...</p></div>
@@ -54,11 +55,9 @@
   
   <div id="graphs"> </div>
   <div id="footer">
-    <a href="about-us.html" title="About Us"><img src="images/team.png" /></a>
-    <p><a href="about-us.html" title="About Us">About us</a></p>
+    <img src="images/team.png" />
     <p>Nicolás Hock Isaza - Juan Felipe Arango Aguirre - Sergio Botero Uribe. © 2010</p>
   </div>
-  
 </body>
 
 </html>

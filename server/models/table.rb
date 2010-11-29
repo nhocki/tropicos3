@@ -8,16 +8,15 @@ class Table < ActiveRecord::Base
 
   def default_options
     {
-      :except => [:centre_id],
-      :include  => [:results]
+      :methods => [:runners]
     }
   end
   
   def runners
     runners = {}
     results.each do |result|
-      runners[result.runner.name] ||= 0
-      runners[result.runner.name] += result.votes
+      runners[result.runner.to_s] ||= 0
+      runners[result.runner.to_s] += result.votes
     end
     runners
   end

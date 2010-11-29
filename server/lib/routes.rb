@@ -20,7 +20,7 @@ class Routes < Array
     return nil, nil if self.empty?
     verb = verb.to_s.downcase.strip.to_sym
     routes = self.select {|route| route.verb == verb}
-    return nil, nil if routes.empty? # No encontramos nada así
+    return nil, nil, nil if routes.empty? # No encontramos nada así
     test_path = Path.new(path)
     routes.each do |route|
       matched, vals, format = route.path.match? test_path

@@ -226,7 +226,7 @@ jQuery.extend({
     var mlist = $.ModelListener({
       // Model Listener
       data_loaded : function(){
-        view.data_loaded();
+        //view.data_loaded();
         
         // view.add_graph_separator("<div style='clear:both;'><h1>Resultados Totales a Nivel Nacional</h1></div>");
         //         data = new Array();

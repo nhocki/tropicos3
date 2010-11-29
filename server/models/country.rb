@@ -2,6 +2,8 @@ class Country < ActiveRecord::Base
   attr_accessible :name
   has_many :states
   
+  include ModelExtensions
+  
   def runners
     runners = {}
     states.each do |state|
@@ -11,5 +13,12 @@ class Country < ActiveRecord::Base
       end
     end
     runners
+  end
+  
+  def default_options
+    {
+      :methods => [:runners],
+      :include => [:states]
+    }
   end
 end
