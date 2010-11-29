@@ -1,0 +1,11 @@
+<h1>Adding a new Table</h1>
+
+<form id="tables_form" name="tables_form" method="post" action="/tables">
+
+  <p>
+    <strong>Centro: </strong> <%= select_tag "table[centre_id]", Centre.all, :id, :name %>
+  </p>
+  <p>
+    <input type="submit" name="button" id="button" value="Crear" />
+  </p>
+</form>

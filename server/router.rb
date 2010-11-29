@@ -112,6 +112,17 @@ class DaRouter
 
   ######################### TABLES #########################
 
+  get 'tables/add.:format' do |format|
+    :"tables/add"
+  end
+
+
+  get 'tables/:id/edit.:format' do |id, format|
+    @table = TablesController.edit({:id => id})
+    format.nil? ? :"tables/edit" : @table
+  end
+
+
   put 'tables/:id.:format' do |id , format|
 
     @@params.merge!({:id => id})
