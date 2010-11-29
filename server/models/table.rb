@@ -4,7 +4,7 @@ class Table < ActiveRecord::Base
 
   belongs_to :centre
 
-  has_many :results
+  has_many :results, :dependent => :destroy
 
   def name
     "Table ##{id} on centre #{centre.id}"

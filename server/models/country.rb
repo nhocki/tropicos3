@@ -1,6 +1,6 @@
 class Country < ActiveRecord::Base
   attr_accessible :name, :small_description
-  has_many :states
+  has_many :states, :dependent => :destroy
   
   include ModelExtensions
   

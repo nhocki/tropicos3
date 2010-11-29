@@ -3,7 +3,7 @@ class Centre < ActiveRecord::Base
   
   attr_accessible :name, :city_id
   belongs_to :city
-  has_many :tables
+  has_many :tables, :dependent => :destroy
   validates_presence_of :name, :city_id
   
   def default_options
