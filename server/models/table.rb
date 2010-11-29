@@ -6,6 +6,10 @@ class Table < ActiveRecord::Base
 
   has_many :results
 
+  def name
+    "Table #{id}"
+  end
+
   def default_options
     {
       :methods => [:runners]

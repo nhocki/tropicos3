@@ -4,13 +4,13 @@ class Result < ActiveRecord::Base
   attr_accessible :votes, :runner_id, :table_id
   belongs_to :table
   belongs_to :runner
-  validates_presence_of :votes, :runner_id, :table_id
+  validates_presence_of :votes, :runner_id
   
   def default_options
-    {:except => [:table_id, :runner_id, :id], :methods => :runner_name}
+    {:except => [:table_id, :runner_id, :id]}
   end
   
-  def runner_name
-    runner.name
-  end
+  def name
+    "Result #{id}"
+  end  
 end

@@ -8,4 +8,14 @@
   <% end %>
 </ul>
 
-<p>You can try to <%= al_garete "go back", add_tables_path %> and fix that</p>
+
+<ul>
+  <% @table.results.each do |result|
+    result.errors.each do |key, value| %>
+      <li><strong><%= titleize key.to_s %>:</strong> <%= value %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+
+<p>You can <%= al_garete "go back", add_tables_path %> and fix that</p>

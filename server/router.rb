@@ -153,6 +153,8 @@ class DaRouter
     
     @table, success = TablesController.create params
 
+    
+
     if success
       format.nil? ? :"tables/show" : @table
     else
@@ -192,17 +194,16 @@ class DaRouter
     @@params = Rack::Request.new(env).params
     
     verb = @@params["_method"] unless @@params["_method"].nil?
-
+    # 
     # puts "\n\n *********   #{verb}"
     # 
-    #     puts "\n\n******************** Debugging params ********************"
-    #     puts @@params.inspect
-    #     puts "\n\n"
-    #     @@params.each do |params, value|
-    #       puts params.inspect
-    #     end
-    #     puts "************************************************************\n\n"
-    
+    # puts "\n\n******************** Debugging params ********************"
+    # puts @@params.inspect
+    # puts "\n\n"
+    # @@params.each do |params, value|
+    #   puts params.inspect
+    # end
+    # puts "************************************************************\n\n"
     
     route, vals, extension = self.class.routes.match(verb, path)
     vals << extension if extension
