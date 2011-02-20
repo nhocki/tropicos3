@@ -79,6 +79,8 @@ module CommonHelpers
         puts "Creating graph #{file_name}.png"
         g.write("public/images/#{file_name}.png")
         true
+      rescue Exception => e
+        "Graph could not be created"
       end
     end
     

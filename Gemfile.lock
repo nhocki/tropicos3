@@ -1,0 +1,18 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    crack (0.1.8)
+    gruff (0.3.6)
+    hpricot (0.8.3)
+    rmagick (2.13.1)
+    tilt (1.2.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  crack
+  gruff
+  hpricot
+  rmagick
+  tilt

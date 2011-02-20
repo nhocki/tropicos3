@@ -1,4 +1,4 @@
-require 'lib/routes.rb'
+require 'routes'
 
 module DSL
   

@@ -1,7 +1,12 @@
-require 'init/gems.rb'
-require 'init/libs.rb'
-require 'init/models.rb'
-require 'init/controllers.rb'
+$LOAD_PATH.unshift File.expand_path('../init', __FILE__)
+$LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift File.expand_path('../models', __FILE__)
+$LOAD_PATH.unshift File.expand_path('../controllers', __FILE__)
+
+require 'gems.rb'
+require 'libs.rb'
+require 'models.rb'
+require 'controllers.rb'
 
 class DaRouter
   
@@ -237,7 +242,7 @@ class DaRouter
     route, vals, extension = self.class.routes.match(verb, path)
     vals << extension if extension
     if route.nil?
-      return [404, {'Content-Type' => 'text/html'}, '¿Qué te pasa chico?']
+      return [404, {'Content-Type' => 'text/html'}, 'Page Not Found!']
     else
       begin
         result = route.action.call(*vals)        

@@ -8,7 +8,7 @@ use Rack::Session::Cookie,  :key => '__ballotox__session',
 use Rack::Static, :urls => ["/public"]
 
 begin
-  require 'router.rb'
+  require './router.rb'
   app = DaRouter.new
   puts "Initialized Ballotox App"
   puts "You can find this awesome app in http://localhost:9292/"
@@ -20,7 +20,7 @@ rescue Exception => e
   puts "There was an error launching the application."
   puts "The following message may be helpful"
   puts "** #{e.message} **"
-  puts "If you can't solve the issue, contact us at our@email.com"
+  puts "If you can't solve the issue, contact us at nhocki@gmail.com"
   puts "*************************************************************"
   exit
 end
