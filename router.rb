@@ -13,9 +13,9 @@ class DaRouter
   
   ######################### COUNTRIES #########################
   
-  get '/countries.:format' do
+  get '/countries.:format' do |format|
     @countries = CountriesController.index
-    :"countries/index"
+    format.nil? ? :"countries/index" : @countries
   end
   
   # Country#show
